@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Digital - Matemáticas | UCE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="logo-uce.png" alt="Logo UCE" class="logo">
+            <div class="header-text">
+                <h1>UNIVERSIDAD CENTRAL DEL ECUADOR</h1>
+                <h2>FACULTAD DE FILOSOFÍA, LETRAS Y CIENCIAS DE LA EDUCACIÓN</h2>
+                <h3>CARRERA DE PEDAGOGÍA EN INFORMÁTICA</h3>
+                <h4 class="student-name">ERICK JOEL CHAMORRO CEVALLOS</h4>
+            </div>
+            <img src="logo-carrera.png" alt="Logo Carrera" class="logo">
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#informacion-general">Información General</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="inicio" class="hero">
+            <h2>Portafolio Digital de Matemáticas</h2>
+            <p>Cuarto Semestre - 2026</p>
+        </section>
+
+        <section id="informacion-general">
+            <h2>Información General del Curso</h2>
+            
+            <div class="unidad" id="unidad1">
+                <h3 onclick="toggleUnidad('unidad1')">UNIDAD 1 <span class="arrow">▼</span></h3>
+                <div class="temas-grid" id="temas-unidad1">
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad1', 'tema1')">TEMA 1</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad1', 'tema2')">TEMA 2</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad1', 'tema3')">TEMA 3</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad1', 'tema4')">TEMA 4</button>
+                </div>
+                <div class="trabajo-content" id="unidad1-tema1"></div>
+                <div class="trabajo-content" id="unidad1-tema2"></div>
+                <div class="trabajo-content" id="unidad1-tema3"></div>
+                <div class="trabajo-content" id="unidad1-tema4"></div>
+            </div>
+
+            <div class="unidad" id="unidad2">
+                <h3 onclick="toggleUnidad('unidad2')">UNIDAD 2 <span class="arrow">▼</span></h3>
+                <div class="temas-grid" id="temas-unidad2">
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad2', 'tema1')">TEMA 1</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad2', 'tema2')">TEMA 2</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad2', 'tema3')">TEMA 3</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad2', 'tema4')">TEMA 4</button>
+                </div>
+                <div class="trabajo-content" id="unidad2-tema1"></div>
+                <div class="trabajo-content" id="unidad2-tema2"></div>
+                <div class="trabajo-content" id="unidad2-tema3"></div>
+                <div class="trabajo-content" id="unidad2-tema4"></div>
+            </div>
+
+            <div class="unidad" id="unidad3">
+                <h3 onclick="toggleUnidad('unidad3')">UNIDAD 3 <span class="arrow">▼</span></h3>
+                <div class="temas-grid" id="temas-unidad3">
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad3', 'tema1')">TEMA 1</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad3', 'tema2')">TEMA 2</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad3', 'tema3')">TEMA 3</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad3', 'tema4')">TEMA 4</button>
+                </div>
+                <div class="trabajo-content" id="unidad3-tema1"></div>
+                <div class="trabajo-content" id="unidad3-tema2"></div>
+                <div class="trabajo-content" id="unidad3-tema3"></div>
+                <div class="trabajo-content" id="unidad3-tema4"></div>
+            </div>
+
+            <div class="unidad" id="unidad4">
+                <h3 onclick="toggleUnidad('unidad4')">UNIDAD 4 <span class="arrow">▼</span></h3>
+                <div class="temas-grid" id="temas-unidad4">
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad4', 'tema1')">TEMA 1</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad4', 'tema2')">TEMA 2</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad4', 'tema3')">TEMA 3</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('unidad4', 'tema4')">TEMA 4</button>
+                </div>
+                <div class="trabajo-content" id="unidad4-tema1"></div>
+                <div class="trabajo-content" id="unidad4-tema2"></div>
+                <div class="trabajo-content" id="unidad4-tema3"></div>
+                <div class="trabajo-content" id="unidad4-tema4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Universidad Central del Ecuador - Facultad de Filosofía, Letras y Ciencias de la Educación</p>
+        <p>Carrera de Pedagogía en Informática - Cuarto Semestre</p>
+    </footer>
+
+    <script>
+        function toggleUnidad(unidadId) {
+            const unidad = document.getElementById(unidadId);
+            const temasGrid = document.getElementById('temas-' + unidadId);
+            const arrow = unidad.querySelector('.arrow');
+            
+            if (temasGrid.classList.contains('open')) {
+                // Cerrar esta unidad: ocultar temas y contenido
+                temasGrid.classList.remove('open');
+                arrow.classList.remove('rotated');
+                // Ocultar todo el contenido de trabajo de esta unidad
+                const contenidos = unidad.querySelectorAll('.trabajo-content');
+                contenidos.forEach(c => c.classList.remove('active'));
+            } else {
+                // Cerrar otras unidades, sus temas, flechas y contenido
+                document.querySelectorAll('.unidad').forEach(otraUnidad => {
+                    if (otraUnidad.id !== unidadId) {
+                        const otraTemasGrid = otraUnidad.querySelector('.temas-grid');
+                        const otraArrow = otraUnidad.querySelector('.arrow');
+                        if (otraTemasGrid) otraTemasGrid.classList.remove('open');
+                        if (otraArrow) otraArrow.classList.remove('rotated');
+                        // Ocultar contenido de otras unidades
+                        const otrosContenidos = otraUnidad.querySelectorAll('.trabajo-content');
+                        otrosContenidos.forEach(c => c.classList.remove('active'));
+                    }
+                });
+                
+                // Abrir la seleccionada
+                temasGrid.classList.add('open');
+                arrow.classList.add('rotated');
+            }
+        }
+        
+        function mostrarTrabajo(unidadId, temaId) {
+            const contentId = unidadId + '-' + temaId;
+            const contentDiv = document.getElementById(contentId);
+            
+            // Ocultar todos los contenidos de la misma unidad
+            const unidad = document.getElementById(unidadId);
+            const allContents = unidad.querySelectorAll('.trabajo-content');
+            allContents.forEach(c => c.classList.remove('active'));
+            
+            // Mostrar el contenido seleccionado
+            if (contentDiv) {
+                contentDiv.classList.add('active');
+                
+                // Contenido específico para cada tema
+                if (unidadId === 'unidad1' && temaId === 'tema1') {
+                    // Primer deber - Google Drive preview
+                    contentDiv.innerHTML = '<p><strong>TEMA 1 DE UNIDAD 1</strong></p><h4 class="tema-titulo">Raíz aproximada de un polinomio, utilizando el método de Newton Raphson</h4><iframe src="https://drive.google.com/file/d/1HrsFv3PMKNY-bwktfB4keDfCocteH2Hr/preview" width="100%" height="600px" style="border: none;"></iframe><p><a href="https://drive.google.com/file/d/1HrsFv3PMKNY-bwktfB4keDfCocteH2Hr/view" target="_blank">Abrir en Google Drive</a></p>';
+                } else {
+                    contentDiv.innerHTML = '<p><strong>' + temaId.toUpperCase() + ' de ' + unidadId.toUpperCase() + '</strong></p><p>Contenido pendiente...</p>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
