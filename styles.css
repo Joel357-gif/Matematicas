@@ -61,6 +61,23 @@ header {
     letter-spacing: 1px;
 }
 
+.silabo-link {
+    display: inline-block;
+    color: white;
+    background: #22c55e;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+}
+
+.silabo-link:hover {
+    background: #16a34a;
+}
+
 nav {
     background-color: #1e293b;
     padding: 10px 0;
@@ -265,6 +282,19 @@ h2 {
 
 .trabajo-content a:hover {
     text-decoration: underline;
+}
+
+.definicion {
+    background: #f0fdf4;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border-left: 4px solid #22c55e;
+    line-height: 1.7;
+    text-align: justify;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1rem;
+    color: #166534;
 }
 
 .tema-titulo {

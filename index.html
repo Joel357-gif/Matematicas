@@ -15,6 +15,7 @@
                 <h2>FACULTAD DE FILOSOFÍA, LETRAS Y CIENCIAS DE LA EDUCACIÓN</h2>
                 <h3>CARRERA DE PEDAGOGÍA EN INFORMÁTICA</h3>
                 <h4 class="student-name">ERICK JOEL CHAMORRO CEVALLOS</h4>
+                <a class="silabo-link" href="https://drive.google.com/file/d/1QeAcnr_ISQ0szNeG5O2wTVrKZJGfbjcO/view" target="_blank">📄 Ver Sílabo de la Materia</a>
             </div>
             <img src="logo-carrera.png" alt="Logo Carrera" class="logo">
         </div>
@@ -24,6 +25,7 @@
         <ul>
             <li><a href="#inicio">Inicio</a></li>
         <li><a href="#informacion-general">Información General</a></li>
+        <li><a href="#trabajos-grupales">Trabajos Grupales</a></li>
         </ul>
     </nav>
 
@@ -92,6 +94,49 @@
                 <div class="trabajo-content" id="unidad4-tema4"></div>
             </div>
         </section>
+
+        <section id="trabajos-grupales">
+            <h2>TRABAJOS GRUPALES</h2>
+            <div class="unidad" id="grupal1">
+                <h3 onclick="toggleUnidad('grupal1')">TRABAJO GRUPAL 1 <span class="arrow">▼</span></h3>
+                <div class="temas-grid" id="temas-grupal1">
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal1', 'tema1')">TEMA 1</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal1', 'tema2')">TEMA 2</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal1', 'tema3')">TEMA 3</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal1', 'tema4')">TEMA 4</button>
+                </div>
+                <div class="trabajo-content" id="grupal1-tema1"></div>
+                <div class="trabajo-content" id="grupal1-tema2"></div>
+                <div class="trabajo-content" id="grupal1-tema3"></div>
+                <div class="trabajo-content" id="grupal1-tema4"></div>
+            </div>
+            <div class="unidad" id="grupal2">
+                <h3 onclick="toggleUnidad('grupal2')">TRABAJO GRUPAL 2 <span class="arrow">▼</span></h3>
+                <div class="temas-grid" id="temas-grupal2">
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal2', 'tema1')">TEMA 1</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal2', 'tema2')">TEMA 2</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal2', 'tema3')">TEMA 3</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal2', 'tema4')">TEMA 4</button>
+                </div>
+                <div class="trabajo-content" id="grupal2-tema1"></div>
+                <div class="trabajo-content" id="grupal2-tema2"></div>
+                <div class="trabajo-content" id="grupal2-tema3"></div>
+                <div class="trabajo-content" id="grupal2-tema4"></div>
+            </div>
+            <div class="unidad" id="grupal3">
+                <h3 onclick="toggleUnidad('grupal3')">TRABAJO GRUPAL 3 <span class="arrow">▼</span></h3>
+                <div class="temas-grid" id="temas-grupal3">
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal3', 'tema1')">TEMA 1</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal3', 'tema2')">TEMA 2</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal3', 'tema3')">TEMA 3</button>
+                    <button class="tema-btn" onclick="mostrarTrabajo('grupal3', 'tema4')">TEMA 4</button>
+                </div>
+                <div class="trabajo-content" id="grupal3-tema1"></div>
+                <div class="trabajo-content" id="grupal3-tema2"></div>
+                <div class="trabajo-content" id="grupal3-tema3"></div>
+                <div class="trabajo-content" id="grupal3-tema4"></div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -100,33 +145,47 @@
     </footer>
 
     <script>
+        // Datos de los trabajos por unidad y tema
+        const trabajos = {
+            'unidad1-tema1': {
+                titulo: 'Raíz aproximada de un polinomio, utilizando el método de Newton Raphson',
+                driveId: '1HrsFv3PMKNY-bwktfB4keDfCocteH2Hr',
+                descripcion: 'El método de Newton-Raphson es un algoritmo iterativo para encontrar raíces de funciones reales. Utiliza la derivada de la función para aproximar la raíz mediante la fórmula: x₁ = x₀ - f(x₀)/f\'(x₀). Es uno de los métodos más rápidos y eficientes cuando la función es derivable y se tiene una buena aproximación inicial.'
+            },
+            'unidad1-tema2': {
+                titulo: 'Raíz aproximada de un polinomio, utilizando el método de Bisección',
+                driveId: '1XdWbv8q1g4kOShtGQ8GGhmwrmZ7VO3mF',
+                descripcion: 'El método de Bisección es un algoritmo de búsqueda de raíces que divide repetidamente un intervalo a la mitad y selecciona el subintervalo donde la función cambia de signo. Se basa en el Teorema del Valor Intermedio y garantiza convergencia, aunque su velocidad es más lenta comparada con otros métodos.'
+            },
+            'unidad1-tema3': {
+                titulo: 'Raíz aproximada de un polinomio, utilizando el método de la Secante',
+                driveId: '1KKYWCRFTOocnu7UvYXDY6qeK7f9SbEWV',
+                descripcion: 'El método de la Secante es un algoritmo iterativo que aproxima la derivada mediante diferencias finitas, evitando calcular la derivada explícitamente. Utiliza dos aproximaciones iniciales y converge más rápido que Bisección, aunque puede fallar si la función no es continua o la aproximación inicial es pobre.'
+            }
+        };
+        
         function toggleUnidad(unidadId) {
             const unidad = document.getElementById(unidadId);
             const temasGrid = document.getElementById('temas-' + unidadId);
             const arrow = unidad.querySelector('.arrow');
             
             if (temasGrid.classList.contains('open')) {
-                // Cerrar esta unidad: ocultar temas y contenido
                 temasGrid.classList.remove('open');
                 arrow.classList.remove('rotated');
-                // Ocultar todo el contenido de trabajo de esta unidad
                 const contenidos = unidad.querySelectorAll('.trabajo-content');
                 contenidos.forEach(c => c.classList.remove('active'));
             } else {
-                // Cerrar otras unidades, sus temas, flechas y contenido
                 document.querySelectorAll('.unidad').forEach(otraUnidad => {
                     if (otraUnidad.id !== unidadId) {
                         const otraTemasGrid = otraUnidad.querySelector('.temas-grid');
                         const otraArrow = otraUnidad.querySelector('.arrow');
                         if (otraTemasGrid) otraTemasGrid.classList.remove('open');
                         if (otraArrow) otraArrow.classList.remove('rotated');
-                        // Ocultar contenido de otras unidades
                         const otrosContenidos = otraUnidad.querySelectorAll('.trabajo-content');
                         otrosContenidos.forEach(c => c.classList.remove('active'));
                     }
                 });
                 
-                // Abrir la seleccionada
                 temasGrid.classList.add('open');
                 arrow.classList.add('rotated');
             }
@@ -135,20 +194,23 @@
         function mostrarTrabajo(unidadId, temaId) {
             const contentId = unidadId + '-' + temaId;
             const contentDiv = document.getElementById(contentId);
-            
-            // Ocultar todos los contenidos de la misma unidad
             const unidad = document.getElementById(unidadId);
             const allContents = unidad.querySelectorAll('.trabajo-content');
             allContents.forEach(c => c.classList.remove('active'));
             
-            // Mostrar el contenido seleccionado
             if (contentDiv) {
                 contentDiv.classList.add('active');
+                const key = unidadId + '-' + temaId;
                 
-                // Contenido específico para cada tema
-                if (unidadId === 'unidad1' && temaId === 'tema1') {
-                    // Primer deber - Google Drive preview
-                    contentDiv.innerHTML = '<p><strong>TEMA 1 DE UNIDAD 1</strong></p><h4 class="tema-titulo">Raíz aproximada de un polinomio, utilizando el método de Newton Raphson</h4><iframe src="https://drive.google.com/file/d/1HrsFv3PMKNY-bwktfB4keDfCocteH2Hr/preview" width="100%" height="600px" style="border: none;"></iframe><p><a href="https://drive.google.com/file/d/1HrsFv3PMKNY-bwktfB4keDfCocteH2Hr/view" target="_blank">Abrir en Google Drive</a></p>';
+                if (trabajos[key]) {
+                    const trabajo = trabajos[key];
+                    contentDiv.innerHTML = `
+                        <p><strong>${temaId.toUpperCase()} DE ${unidadId.toUpperCase()}</strong></p>
+                        <h4 class="tema-titulo">${trabajo.titulo}</h4>
+                        <div class="definicion">${trabajo.descripcion}</div>
+                        <iframe src="https://drive.google.com/file/d/${trabajo.driveId}/preview" width="100%" height="600px" style="border: none;"></iframe>
+                        <p><a href="https://drive.google.com/file/d/${trabajo.driveId}/view" target="_blank">Abrir en Google Drive</a></p>
+                    `;
                 } else {
                     contentDiv.innerHTML = '<p><strong>' + temaId.toUpperCase() + ' de ' + unidadId.toUpperCase() + '</strong></p><p>Contenido pendiente...</p>';
                 }
